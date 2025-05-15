@@ -7,6 +7,21 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+
+// was email updates successfully?
+if (isset($_SESSION['error'])) {
+    echo "<p style='color: red;'>" . $_SESSION['error'] . "</p>";
+    unset($_SESSION['error']); // Clear it so it doesn't show again
+}
+
+if (isset($_SESSION['success'])) {
+    echo "<p style='color: green;'>" . $_SESSION['success'] . "</p>";
+    unset($_SESSION['success']); // Clear after showing once
+}
+
+
+
+
 ?>
 <h1>Welcome, <?php echo $_SESSION['username']; ?> your email is: </h1>
 <h2><?php echo $_SESSION['email']; ?></h2>
