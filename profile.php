@@ -20,8 +20,6 @@ if (isset($_SESSION['success'])) {
 }
 
 
-
-
 ?>
 <h1>Welcome, <?php echo $_SESSION['username']; ?> your email is: </h1>
 <h2><?php echo $_SESSION['email']; ?></h2>

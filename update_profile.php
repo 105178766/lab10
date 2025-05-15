@@ -23,9 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // update the email in the database
-    $query  = "UPDATE users SET email = '$new_email' WHERE username = '{$_SESSION['username']}'"; // primary key username, update the email field
-    $result = mysqli_query($conn, $query);
-
+    $statement = mysqli_prepare($conn, "UPDATE users SET email = ? WHERE username = ?"); // ? is a placeholder for the data to be inserted later
+    mysqli_stmt_bind_param($statement, "ss", $new_email, $_SESSION['username']); // Binding the parameters to the statement (insert the data as strings)
+    $result = mysqli_stmt_execute($statement);
+    mysqli_close($conn); // Close the database connection
     if ($result) {
         // Update session data with the new email
         $_SESSION['email'] = $new_email;
