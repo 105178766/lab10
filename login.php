@@ -17,19 +17,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     mysqli_stmt_bind_param($statement, "ss", $input_username, $input_password); // Binding the parameters to the statement (insert the data as strings)
     mysqli_stmt_execute($statement); // Executes thr sql query
     $result = mysqli_stmt_get_result($statement); // get the result of the statement
-
     if($user = mysqli_fetch_assoc($result)){
         $_SESSION['username'] = $user['username']; // Store username in session
         $_SESSION['email'] = $user['email']; // Store email in session
-
-        if($user['username'] == 'john'){
-            header("Location: profile.php");
-            exit();
-          }else{
-            $_SESSION['error'] = "User access not allowed!"; // only the hardcoded john can access the profile page
-          }
-        }else{
-          $_SESSION['error'] = "**Invalid username or password**";  // incorrect username or password
+        header("Location: profile.php");
+        exit();
+    } else {
+        $_SESSION['error'] = "**Invalid username or password**";  // incorrect username or password
     }
     mysqli_close($conn); // Close the database connection
 }

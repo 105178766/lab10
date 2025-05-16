@@ -15,7 +15,7 @@ if(!isset($_SESSION['username'])){
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_email = trim($_POST['new_email']);
-    // check if the email is valid
+    // genai"check if the email is valid"
     if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Invalid email address.";
         header("Location: profile.php");

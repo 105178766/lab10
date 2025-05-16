@@ -27,7 +27,7 @@ if (isset($_SESSION['success'])) {
 <h3>Edit Profile</h3>
 <form method="POST" action="update_profile.php">
     <label>New Email:</label>
-    <input type="email" name="new_email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" required><br><br> <!-- htmlspecialchars prevents any hacking -->
+    <input type="email" name="new_email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" required><br><br> 
     <input type="submit" value="Update Email">
 </form>
 <br><br>
